@@ -297,6 +297,10 @@ type
  * @CAIRO_STATUS_DEVICE_FINISHED: target device has been finished (Since 1.12)
  * @CAIRO_STATUS_JBIG2_GLOBAL_MISSING: %CAIRO_MIME_TYPE_JBIG2_GLOBAL_ID has been used on at least one image
  *   but no image provided %CAIRO_MIME_TYPE_JBIG2_GLOBAL (Since 1.14)
+ * @CAIRO_STATUS_PNG_ERROR: error occurred in libpng while reading from or writing to a PNG file (Since 1.16)
+ * @CAIRO_STATUS_FREETYPE_ERROR: error occurred in libfreetype (Since 1.16)
+ * @CAIRO_STATUS_WIN32_GDI_ERROR: error occurred in the Windows Graphics Device Interface (Since 1.16)
+ * @CAIRO_STATUS_TAG_ERROR: invalid tag name, attributes, or nesting (Since 1.16)
  * @CAIRO_STATUS_LAST_STATUS: this is a special value indicating the number of
  *   status values defined in this enumeration.  When using this value, note
  *   that the version of cairo at run-time may have additional status values
@@ -353,6 +357,10 @@ type
     CAIRO_STATUS_INVALID_MESH_CONSTRUCTION,
     CAIRO_STATUS_DEVICE_FINISHED,
     CAIRO_STATUS_JBIG2_GLOBAL_MISSING,
+    CAIRO_STATUS_PNG_ERROR,
+    CAIRO_STATUS_FREETYPE_ERROR,
+    CAIRO_STATUS_WIN32_GDI_ERROR,
+    CAIRO_STATUS_TAG_ERROR,
 
     CAIRO_STATUS_LAST_STATUS
   );
@@ -913,6 +921,16 @@ type
 function cairo_copy_clip_rectangle_list(cr: Pcairo_t): Pcairo_rectangle_list_t; cdecl; external LIB_CAIRO;
 
 procedure cairo_rectangle_list_destroy(rectangle_list: Pcairo_rectangle_list_t); cdecl; external LIB_CAIRO;
+
+(* Logical structure tagging functions *)
+
+const
+  CAIRO_TAG_DEST = 'cairo.dest';
+  CAIRO_TAG_LINK = 'Link';
+
+procedure cairo_tag_begin(cr: Pcairo_t; const tag_name: pchar; const attributes: pchar); cdecl; external LIB_CAIRO;
+
+procedure cairo_tag_end(cr: Pcairo_t; const tag_name: pchar); cdecl; external LIB_CAIRO;
 
 (* Font/Text functions *)
 
