@@ -86,9 +86,9 @@ procedure cairo_pdf_surface_set_size(surface: Pcairo_surface_t; width_in_points:
 
 (**
  * cairo_pdf_outline_flags_t:
- * @CAIRO_BOOKMARK_FLAG_OPEN: The outline item defaults to open in the PDF viewer (Since 1.16)
- * @CAIRO_BOOKMARK_FLAG_BOLD: The outline item is displayed by the viewer in bold text (Since 1.16)
- * @CAIRO_BOOKMARK_FLAG_ITALIC: The outline item is displayed by the viewer in italic text (Since 1.16)
+ * @CAIRO_PDF_OUTLINE_FLAG_OPEN: The outline item defaults to open in the PDF viewer (Since 1.16)
+ * @CAIRO_PDF_OUTLINE_FLAG_BOLD: The outline item is displayed by the viewer in bold text (Since 1.16)
+ * @CAIRO_PDF_OUTLINE_FLAG_ITALIC: The outline item is displayed by the viewer in italic text (Since 1.16)
  *
  * #cairo_pdf_outline_flags_t is used by the
  * cairo_pdf_surface_add_outline() function specify the attributes of
@@ -99,9 +99,9 @@ procedure cairo_pdf_surface_set_size(surface: Pcairo_surface_t; width_in_points:
  **)
 type
   cairo_pdf_outline_flags_t = (
-    CAIRO_BOOKMARK_FLAG_OPEN   = $1,
-    CAIRO_BOOKMARK_FLAG_BOLD   = $2,
-    CAIRO_BOOKMARK_FLAG_ITALIC = $4
+    CAIRO_PDF_OUTLINE_FLAG_OPEN   = $1,
+    CAIRO_PDF_OUTLINE_FLAG_BOLD   = $2,
+    CAIRO_PDF_OUTLINE_FLAG_ITALIC = $4
   );
 
 const
@@ -116,7 +116,6 @@ function cairo_pdf_surface_add_outline (surface: Pcairo_surface_t; parent_id: ci
  * @CAIRO_PDF_METADATA_SUBJECT: The document subject (Since 1.16)
  * @CAIRO_PDF_METADATA_KEYWORDS: The document keywords (Since 1.16)
  * @CAIRO_PDF_METADATA_CREATOR: The document creator (Since 1.16)
- * @CAIRO_PDF_METADATA_TITLE: The document title (Since 1.16)
  * @CAIRO_PDF_METADATA_CREATE_DATE: The document creation date (Since 1.16)
  * @CAIRO_PDF_METADATA_MOD_DATE: The document modification date (Since 1.16)
  *
