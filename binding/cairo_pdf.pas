@@ -107,7 +107,7 @@ type
 const
   CAIRO_PDF_OUTLINE_ROOT = 0;
 
-function cairo_pdf_surface_add_outline (surface: Pcairo_surface_t; parent_id: cint; const utf8: pchar; const dest: pchar; flags: cairo_pdf_outline_flags_t): cint; cdecl; external LIB_CAIRO;
+function cairo_pdf_surface_add_outline (surface: Pcairo_surface_t; parent_id: cint; const utf8: pchar; const link_attribs: pchar; flags: cairo_pdf_outline_flags_t): cint; cdecl; external LIB_CAIRO;
 
 (**
  * cairo_pdf_metadata_t:
