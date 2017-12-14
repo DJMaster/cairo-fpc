@@ -2116,6 +2116,10 @@ const
   CAIRO_MIME_TYPE_JBIG2 = 'application/x-cairo.jbig2';
   CAIRO_MIME_TYPE_JBIG2_GLOBAL = 'application/x-cairo.jbig2-global';
   CAIRO_MIME_TYPE_JBIG2_GLOBAL_ID = 'application/x-cairo.jbig2-global-id';
+  CAIRO_MIME_TYPE_CCITT_FAX = 'image/g3fax';
+  CAIRO_MIME_TYPE_CCITT_FAX_PARAMS = 'application/x-cairo.ccitt.params';
+  CAIRO_MIME_TYPE_EPS = 'application/postscript';
+  CAIRO_MIME_TYPE_EPS_PARAMS = 'application/x-cairo.eps.params';
 
 type
   ppcuchar = ^pcuchar;

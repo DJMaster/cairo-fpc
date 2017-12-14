@@ -67,6 +67,46 @@ type
     CAIRO_SVG_VERSION_1_2
   );
 
+(**
+ * cairo_svg_version_t:
+ *
+ * @CAIRO_SVG_UNIT_USER: User unit, a value in the current coordinate system.
+ *   If used in the root element for the initial coordinate systems it
+ *   corresponds to pixels. (Since 1.16)
+ * @CAIRO_SVG_UNIT_EM: The size of the element's font. (Since 1.16)
+ * @CAIRO_SVG_UNIT_EX: The x-height of the element’s font. (Since 1.16)
+ * @CAIRO_SVG_UNIT_PX: Pixels (1px = 1/96th of 1in). (Since 1.16)
+ * @CAIRO_SVG_UNIT_IN: Inches (1in = 2.54cm = 96px). (Since 1.16)
+ * @CAIRO_SVG_UNIT_CM: Centimeters (1cm = 96px/2.54). (Since 1.16)
+ * @CAIRO_SVG_UNIT_MM: Millimeters (1mm = 1/10th of 1cm). (Since 1.16)
+ * @CAIRO_SVG_UNIT_PT: Points (1pt = 1/72th of 1in). (Since 1.16)
+ * @CAIRO_SVG_UNIT_PC: Picas (1pc = 1/6th of 1in). (Since 1.16)
+ * @CAIRO_SVG_UNIT_PERCENT: Percent, a value that is some fraction of another
+ *   reference value. (Since 1.16)
+ *
+ * #cairo_svg_unit_t is used to describe the units valid for coordinates and
+ * lengths in the SVG specification.
+ *
+ * See also:
+ * https://www.w3.org/TR/SVG/coords.html#Units
+ * https://www.w3.org/TR/SVG/types.html#DataTypeLength
+ * https://www.w3.org/TR/css-values-3/#lengths
+ *
+ * Since: 1.16
+ **)
+  cairo_svg_unit_t = (
+    CAIRO_SVG_UNIT_USER = 0,
+    CAIRO_SVG_UNIT_EM,
+    CAIRO_SVG_UNIT_EX,
+    CAIRO_SVG_UNIT_PX,
+    CAIRO_SVG_UNIT_IN,
+    CAIRO_SVG_UNIT_CM,
+    CAIRO_SVG_UNIT_MM,
+    CAIRO_SVG_UNIT_PT,
+    CAIRO_SVG_UNIT_PC,
+    CAIRO_SVG_UNIT_PERCENT
+  );
+
 function cairo_svg_surface_create(const filename: pchar; width_in_points: cdouble; height_in_points: cdouble): Pcairo_surface_t; cdecl; external LIB_CAIRO;
 
 function cairo_svg_surface_create_for_stream(write_func: cairo_write_func_t; closure: pointer; width_in_points: cdouble; height_in_points: cdouble): Pcairo_surface_t; cdecl; external LIB_CAIRO;
@@ -76,6 +116,10 @@ procedure cairo_svg_surface_restrict_to_version(surface: Pcairo_surface_t; versi
 procedure cairo_svg_get_versions(const versions: PPcairo_svg_version_t; num_versions: pcint); cdecl; external LIB_CAIRO;
 
 function cairo_svg_version_to_string(version: cairo_svg_version_t): pchar; cdecl; external LIB_CAIRO;
+
+procedure cairo_svg_surface_set_document_unit(surface: Pcairo_surface_t; unit_: cairo_svg_unit_t); cdecl; external LIB_CAIRO;
+
+function cairo_svg_surface_get_document_unit(surface: Pcairo_surface_t): cairo_svg_unit_t; cdecl; external LIB_CAIRO;
 
 {$else} (* CAIRO_HAS_SVG_SURFACE *)
 // # error Cairo was not compiled with support for the svg backend
