@@ -403,7 +403,7 @@ type
  * @CAIRO_FORMAT_A1: each pixel is a 1-bit quantity holding
  *   an alpha value. Pixels are packed together into 32-bit
  *   quantities. The ordering of the bits matches the
- *   endianess of the platform. On a big-endian machine, the
+ *   endianness of the platform. On a big-endian machine, the
  *   first pixel is in the uppermost bit, on a little-endian
  *   machine the first pixel is in the least-significant bit. (Since 1.0)
  * @CAIRO_FORMAT_RGB16_565: each pixel is a 16-bit quantity
@@ -590,7 +590,7 @@ type
  * translucent layers too.
  * For a more detailed explanation of the effects of each operator, including
  * the mathematical definitions, see
- * <ulink url="http://cairographics.org/operators/">http://cairographics.org/operators/</ulink>.
+ * <ulink url="https://cairographics.org/operators/">https://cairographics.org/operators/</ulink>.
  *
  * Since: 1.0
  **)
@@ -961,7 +961,7 @@ type
  *
  * A #cairo_font_face_t specifies all aspects of a font other
  * than the size or font matrix (a font matrix is used to distort
- * a font by sheering it or scaling it unequally in the two
+ * a font by shearing it or scaling it unequally in the two
  * directions) . A font face can be set on a #cairo_t by using
  * cairo_set_font_face(); the size and font matrix are set with
  * cairo_set_font_size() and cairo_set_font_matrix().
@@ -1320,6 +1320,10 @@ function cairo_font_options_get_hint_style(const options: Pcairo_font_options_t)
 procedure cairo_font_options_set_hint_metrics(options: Pcairo_font_options_t; hint_metrics: cairo_hint_metrics_t); cdecl; external LIB_CAIRO;
 
 function cairo_font_options_get_hint_metrics(const options: Pcairo_font_options_t): cairo_hint_metrics_t; cdecl; external LIB_CAIRO;
+
+function cairo_font_options_get_variations(options: Pcairo_font_options_t): pchar; cdecl; external LIB_CAIRO;
+
+procedure cairo_font_options_set_variations(options: Pcairo_font_options_t; const variations: pchar); cdecl; external LIB_CAIRO;
 
 (* This interface is for dealing with text as text, not caring about the font object inside the the cairo_t. *)
 
@@ -2034,7 +2038,6 @@ type
  * @CAIRO_SURFACE_TYPE_DRM: The surface is of type Direct Render Manager, since 1.10
  * @CAIRO_SURFACE_TYPE_TEE: The surface is of type 'tee' (a multiplexing surface), since 1.10
  * @CAIRO_SURFACE_TYPE_XML: The surface is of type XML (for debugging), since 1.10
- * @CAIRO_SURFACE_TYPE_SKIA: The surface is of type Skia, since 1.10
  * @CAIRO_SURFACE_TYPE_SUBSURFACE: The surface is a subsurface created with
  *   cairo_surface_create_for_rectangle(), since 1.10
  * @CAIRO_SURFACE_TYPE_COGL: This surface is of type Cogl, since 1.12

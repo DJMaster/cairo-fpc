@@ -68,7 +68,7 @@ type
   );
 
 (**
- * cairo_svg_version_t:
+ * cairo_svg_unit_t:
  *
  * @CAIRO_SVG_UNIT_USER: User unit, a value in the current coordinate system.
  *   If used in the root element for the initial coordinate systems it
